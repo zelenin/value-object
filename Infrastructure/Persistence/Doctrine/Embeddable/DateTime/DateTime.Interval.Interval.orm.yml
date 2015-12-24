@@ -1,0 +1,5 @@
+Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Interval\Interval:
+    type: embeddable
+    fields:
+        start: { type: datetime.date }
+        end: { type: datetime.date, column : '`end`' }
