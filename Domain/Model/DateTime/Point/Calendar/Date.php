@@ -67,7 +67,7 @@ final class Date extends DefaultValueObject implements CalendarDate
      * @param int $month
      * @param int $day
      *
-     * @return static
+     * @return self
      */
     public static function create($year, $month, $day)
     {
@@ -77,7 +77,7 @@ final class Date extends DefaultValueObject implements CalendarDate
     /**
      * @param DateTimeInterface $dateTime
      *
-     * @return static
+     * @return self
      */
     public static function createFromDateTime(DateTimeInterface $dateTime)
     {
@@ -87,11 +87,19 @@ final class Date extends DefaultValueObject implements CalendarDate
     /**
      * @param string $date
      *
-     * @return static
+     * @return self
      */
     public static function createFromString($date)
     {
         return static::createFromDateTime(new DateTimeImmutable($date));
+    }
+
+    /**
+     * @return self
+     */
+    public static function now()
+    {
+        return static::createFromDateTime(new DateTimeImmutable());
     }
 
     /**
@@ -188,7 +196,7 @@ final class Date extends DefaultValueObject implements CalendarDate
     /**
      * @param Duration $duration
      *
-     * @return static
+     * @return self
      */
     public function add(Duration $duration)
     {
@@ -198,7 +206,7 @@ final class Date extends DefaultValueObject implements CalendarDate
     /**
      * @param Duration $duration
      *
-     * @return static
+     * @return self
      */
     public function sub(Duration $duration)
     {

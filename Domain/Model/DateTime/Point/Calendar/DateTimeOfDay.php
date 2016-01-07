@@ -37,7 +37,7 @@ final class DateTimeOfDay extends DefaultValueObject implements CalendarDate
      * @param Date $date
      * @param TimeOfDay $time
      *
-     * @return static
+     * @return self
      */
     public static function create(Date $date, TimeOfDay $time)
     {
@@ -47,7 +47,7 @@ final class DateTimeOfDay extends DefaultValueObject implements CalendarDate
     /**
      * @param DateTimeInterface $dateTime
      *
-     * @return static
+     * @return self
      */
     public static function createFromDateTime(DateTimeInterface $dateTime)
     {
@@ -57,11 +57,19 @@ final class DateTimeOfDay extends DefaultValueObject implements CalendarDate
     /**
      * @param string $date
      *
-     * @return static
+     * @return self
      */
     public static function createFromString($date)
     {
         return static::createFromDateTime(new DateTimeImmutable($date));
+    }
+
+    /**
+     * @return self
+     */
+    public static function now()
+    {
+        return static::createFromDateTime(new DateTimeImmutable());
     }
 
     /**
@@ -193,7 +201,7 @@ final class DateTimeOfDay extends DefaultValueObject implements CalendarDate
     /**
      * @param Duration $duration
      *
-     * @return static
+     * @return self
      */
     public function add(Duration $duration)
     {
@@ -203,7 +211,7 @@ final class DateTimeOfDay extends DefaultValueObject implements CalendarDate
     /**
      * @param Duration $duration
      *
-     * @return static
+     * @return self
      */
     public function sub(Duration $duration)
     {

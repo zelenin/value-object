@@ -66,7 +66,7 @@ final class TimeOfDay extends DefaultValueObject implements FixedPoint
      * @param $minute
      * @param $second
      *
-     * @return static
+     * @return self
      */
     public static function create($hour, $minute, $second)
     {
@@ -76,7 +76,7 @@ final class TimeOfDay extends DefaultValueObject implements FixedPoint
     /**
      * @param DateTimeInterface $dateTime
      *
-     * @return static
+     * @return self
      */
     public static function createFromDateTime(DateTimeInterface $dateTime)
     {
@@ -86,11 +86,19 @@ final class TimeOfDay extends DefaultValueObject implements FixedPoint
     /**
      * @param string $date
      *
-     * @return static
+     * @return self
      */
     public static function createFromString($date)
     {
         return static::createFromDateTime(new DateTimeImmutable($date));
+    }
+
+    /**
+     * @return self
+     */
+    public static function now()
+    {
+        return static::createFromDateTime(new DateTimeImmutable());
     }
 
     /**
