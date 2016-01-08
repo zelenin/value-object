@@ -5,11 +5,11 @@ namespace Zelenin\Ddd\ValueObject\Infrastructure\Persistence\Doctrine\Type\DateT
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
-use Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Point\Calendar\Date;
+use Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Point\Calendar\DateTimeOfDay;
 
-class DateType extends Type
+class DateTimeType extends Type
 {
-    const NAME = 'datetime.date';
+    const NAME = 'datetime.datetime';
 
     /**
      * @param array $fieldDeclaration
@@ -21,30 +21,30 @@ class DateType extends Type
      */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        return $platform->getDateTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getDateTimeTypeDeclarationSQL($fieldDeclaration);
     }
 
     /**
      * @param string $value
      * @param AbstractPlatform $platform
      *
-     * @return Date
+     * @return DateTimeOfDay
      */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return Date::createFromString($value);
+        return DateTimeOfDay::createFromString($value);
     }
 
     /**
-     * @param Date $value
+     * @param DateTimeOfDay $value
      * @param AbstractPlatform $platform
      *
      * @return string
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        if ($value instanceof Date) {
-            return $value->toDateTime()->format($platform->getDateFormatString());
+        if ($value instanceof DateTimeOfDay) {
+            return $value->toDateTime()->format($platform->getDateTimeFormatString());
         }
         return parent::convertToDatabaseValue($value, $platform);
     }
