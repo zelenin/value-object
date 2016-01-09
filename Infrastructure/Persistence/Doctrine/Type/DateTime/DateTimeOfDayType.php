@@ -7,9 +7,9 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Point\Calendar\DateTimeOfDay;
 
-class DateTimeType extends Type
+class DateTimeOfDayType extends Type
 {
-    const NAME = 'datetime.datetime';
+    const NAME = 'datetime.datetimeofday';
 
     /**
      * @param array $fieldDeclaration

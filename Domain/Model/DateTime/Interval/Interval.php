@@ -10,23 +10,23 @@ use Zelenin\Ddd\Core\Domain\Object\Object;
 use Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Duration\Duration;
 use Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Point\Calendar\CalendarDate;
 
-final class Interval extends DefaultValueObject
+abstract class Interval extends DefaultValueObject
 {
     /**
      * @var CalendarDate
      */
-    private $start;
+    protected $start;
 
     /**
      * @var CalendarDate
      */
-    private $end;
+    protected $end;
 
     /**
      * @param CalendarDate|Object $start
      * @param CalendarDate|HasClassName $end
      */
-    private function __construct(CalendarDate $start, CalendarDate $end)
+    protected function __construct(CalendarDate $start, CalendarDate $end)
     {
         if (!$end->sameTypeAs($start)) {
             throw new NotMatchTypeException($end);
@@ -38,39 +38,6 @@ final class Interval extends DefaultValueObject
 
         $this->start = $start;
         $this->end = $end;
-    }
-
-    /**
-     * @param CalendarDate $start
-     * @param CalendarDate $end
-     *
-     * @return static
-     */
-    public static function create(CalendarDate $start, CalendarDate $end)
-    {
-        return new static($start, $end);
-    }
-
-    /**
-     * @param CalendarDate $start
-     * @param Duration $duration
-     *
-     * @return static
-     */
-    public static function createFromStartAndDuration(CalendarDate $start, Duration $duration)
-    {
-        return static::create($start, $start->add($duration));
-    }
-
-    /**
-     * @param CalendarDate $end
-     * @param Duration $duration
-     *
-     * @return static
-     */
-    public static function createFromEndAndDuration(CalendarDate $end, Duration $duration)
-    {
-        return static::create($end->sub($duration), $end);
     }
 
     /**

@@ -1,4 +1,4 @@
-Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Interval\Interval:
+Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Interval\DateInterval:
     type: embeddable
     fields:
         start: { type: datetime.date }

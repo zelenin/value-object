@@ -1,0 +1,5 @@
+Zelenin\Ddd\ValueObject\Domain\Model\DateTime\Interval\DateTimeOfDayInterval:
+    type: embeddable
+    fields:
+        start: { type: datetime.datetimeofday }
+        end: { type: datetime.datetimeofday, column : '`end`' }
