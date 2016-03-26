@@ -21,7 +21,7 @@
     },
     "require": {
         "php": ">=5.5",
-        "zelenin/ddd-core": "~0.1.3"
+        "zelenin/ddd-core": "~0.2.0"
     },
     "autoload": {
         "psr-4": {
